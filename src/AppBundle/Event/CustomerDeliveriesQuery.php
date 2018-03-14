@@ -3,8 +3,9 @@ namespace AppBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Delivery;
 
-final class CustomerDeliveriesQuery extends Event
+class CustomerDeliveriesQuery extends Event
 {
     const NAME = 'customer_delivery_query';
 
@@ -23,7 +24,7 @@ final class CustomerDeliveriesQuery extends Event
         return $this->userId;
     }
 
-    public function getDeliveries()
+    public function getUserDeliveries()
     {
         return $this->deliveries;
     }

@@ -14,7 +14,6 @@ class CustomerDeliveriesQueryHandler
         $dispatcher = new EventDispatcher();
         $customerDeliveriesQuery = new CustomerDeliveriesQuery($user);
         $dispatcher->dispatch(CustomerDeliveriesQuery::NAME, $customerDeliveriesQuery);
-        #return new JsonResponse($customerDeliveriesQuery);
         return $customerDeliveriesQuery;
     }
 }
