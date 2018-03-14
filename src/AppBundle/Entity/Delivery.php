@@ -23,7 +23,7 @@ class Delivery
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="deliveries")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="deliveries", fetch="EAGER")
      * @ORM\JoinColumn(name="userId", referencedColumnName="id")
      */
     private $user;

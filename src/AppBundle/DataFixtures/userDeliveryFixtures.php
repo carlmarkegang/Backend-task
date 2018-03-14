@@ -12,8 +12,12 @@ class userDeliveryFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // composer require --dev doctrine/doctrine-fixtures-bundle
+        // composer update && composer install
+        // php bin/console doctrine:schema:update --force
         // php bin/console doctrine:fixtures:load
+        // php bin/console cache:clear --no-warmup --env=prod
+        // php bin/console doctrine:schema:validate
+
         $this->createUser('user1',$manager);
         $this->createUser('user2',$manager);
     }

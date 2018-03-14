@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -23,9 +24,13 @@ class User
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="delivery", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Delivery", mappedBy="user", fetch="EAGER")
      */
     private $deliveries;
+
+    public function __construct(){
+        $this->deliveries = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -75,5 +80,17 @@ class User
         $this->deliveries = $deliveries;
     }
 
+
+    /**
+     * @return array
+     */
+    #public function jsonSerialize()
+    #{
+    #    return [
+    #        'userId' => $this->getId(),
+    #        'username' => $this->getUsername(),
+    #        'deliveries' => $this->getDeliveries()
+    #    ];
+    #}
 
 }
