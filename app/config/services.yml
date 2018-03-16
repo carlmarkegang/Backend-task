@@ -28,8 +28,13 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+        arguments:
+            - '@app.customer_deliveries_query_handler'
 
-    #customer_deliveries_query_handler:
-    #    class: AppBundle\EventListener\CustomerDeliveriesQueryHandler
-    #    tags:
-    #        - { name: kernel.event_listener }
+    app.customer_deliveries_query_handler:
+        class: AppBundle\EventListener\CustomerDeliveriesQueryHandler
+        public: true
+        arguments: ['@doctrine.orm.default_entity_manager']
+        tags:
+            - { name: kernel.event_listener, event: customer_delivery_query, method: onCustomerDeliveriesQuery }
+

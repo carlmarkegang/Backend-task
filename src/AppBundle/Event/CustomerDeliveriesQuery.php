@@ -13,10 +13,10 @@ class CustomerDeliveriesQuery extends Event
     private $deliveries;
 
 
-    public function __construct(User $user)
+    public function __construct($userId)
     {
-        $this->userId = $user->getId();
-        $this->deliveries = $user->getDeliveries();
+        $this->userId = $userId;
+        $this->deliveries = null;
     }
 
    public function getUserId()
@@ -27,6 +27,11 @@ class CustomerDeliveriesQuery extends Event
     public function getUserDeliveries()
     {
         return $this->deliveries;
+    }
+
+    public function setDeliveries($deliveries)
+    {
+        $this->deliveries = $deliveries;
     }
 
 }
